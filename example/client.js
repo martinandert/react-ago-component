@@ -14,7 +14,7 @@ var App = React.createClass({
         </head>
 
         <body>
-          <Ago />
+          This page was loaded <Ago tooltipFormat="long" />.
         </body>
       </html>
     );

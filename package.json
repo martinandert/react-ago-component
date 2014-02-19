@@ -1,7 +1,7 @@
 {
   "name": "react-ago-component",
   "version": "0.0.1",
-  "description": "A component for React that renders the approximate time ago in words from a specific past date using an HTML time tag",
+  "description": "A component for React that renders the approximate time ago in words from a specific past date using an HTML5 time element",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -28,7 +28,10 @@
     "url": "https://github.com/martinandert/react-ago-component/issues"
   },
   "homepage": "https://github.com/martinandert/react-ago-component",
-  "dependencies": {},
+  "dependencies": {
+    "damals": "~0.6.1",
+    "globalization": "0.0.2"
+  },
   "peerDependencies": {
     "react": "~0.9.0"
   },
