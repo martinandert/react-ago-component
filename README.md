@@ -1,6 +1,6 @@
 # React Ago Component
 
-A component for [React][1] that renders the approximate time ago in words from a specific past date using an HTML <time> tag.
+A component for [React][1] that renders the approximate time ago in words from a specific past date using an HTML time tag.
 
 
 ## Installation
