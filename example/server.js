@@ -19,7 +19,7 @@ express()
   .get('/', function(req, res, next) {
     var now = Date.now();
 
-    res.cookie('serverTime', now, { maxAge: 10, httpOnly: false });
+    res.cookie('serverTime', now, { maxAge: 10000, httpOnly: false });
     res.send(render(App({ serverTime: now })));
   })
   .listen(3000, function() {

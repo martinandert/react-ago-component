@@ -5,12 +5,14 @@ var timeAgo   = require('damals');
 var localize  = require('globalization').localize;
 var strftime  = require('globalization/strftime');
 
+var toString = Object.prototype.toString;
+
 function isString(value) {
-  return Object.prototype.toString.call(value) == '[object String]';
+  return toString.call(value) == '[object String]';
 }
 
 function isNumber(value) {
-  return Object.prototype.toString.call(value) == '[object Number]';
+  return toString.call(value) == '[object Number]';
 }
 
 var Ago = React.createClass({
@@ -28,7 +30,7 @@ var Ago = React.createClass({
 
   componentDidMount: function() {
     if (this.props.autoUpdate) {
-      var delay = isNumber(this.props.autoUpdate) ? this.props.autoUpdate * 1000 : 7500;
+      var delay = isNumber(this.props.autoUpdate) ? this.props.autoUpdate * 1000 : 5000;
 
       this.autoUpdater = setInterval(function() {
         this.forceUpdate();
