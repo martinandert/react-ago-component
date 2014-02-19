@@ -12,6 +12,9 @@
     "exports": false,
     "console": false,
     "document": false,
-    "setTimeout": false
+    "setTimeout": false,
+    "clearTimeout": false,
+    "setInterval": false,
+    "clearInterval": false
   }
 }
