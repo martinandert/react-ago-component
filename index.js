@@ -16,8 +16,31 @@ function isNumber(value) {
 var Ago = React.createClass({
   displayName: 'Ago',
 
+  autoUpdater: null,
+
   getDefaultProps: function() {
-    return { date: new Date(), tooltipFormat: "default" };
+    return {
+      date: new Date(),
+      tooltipFormat: 'default',
+      autoUpdate: 0
+    };
+  },
+
+  componentDidMount: function() {
+    if (this.props.autoUpdate) {
+      var delay = isNumber(this.props.autoUpdate) ? this.props.autoUpdate * 1000 : 7500;
+
+      this.autoUpdater = setInterval(function() {
+        this.forceUpdate();
+      }.bind(this), delay);
+    }
+  },
+
+  componentWillUnmount: function() {
+    if (this.autoUpdater) {
+      clearInterval(this.autoUpdater);
+      this.autoUpdater = null;
+    }
   },
 
   render: function() {
