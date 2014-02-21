@@ -18,9 +18,9 @@ var App = React.createClass({
         </head>
 
         <body>
-          <h1>This page was requested <Ago date={timestamp} autoUpdate={true} />.</h1>
+          <h1>This page was requested <Ago date={timestamp} autoUpdate={true} tooltipFormat="long" />.</h1>
           <p>In order to see the auto-update, please let some time pass by.</p>
-          <p>Hover your mouse over the bold text to see the actual date/time.</p>
+          <p>Hovering the mouse pointer over the bold text displays a tooltip with the actual date/time.</p>
         </body>
       </html>
     );

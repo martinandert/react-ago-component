@@ -30,7 +30,7 @@ var Ago = React.createClass({
 
   componentDidMount: function() {
     if (this.props.autoUpdate) {
-      var delay = isNumber(this.props.autoUpdate) ? this.props.autoUpdate * 1000 : 5000;
+      var delay = isNumber(this.props.autoUpdate) ? this.props.autoUpdate * 1000 : 2600;
 
       this.autoUpdater = setInterval(function() {
         this.forceUpdate();
