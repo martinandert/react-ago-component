@@ -1,24 +1,23 @@
 'use strict';
 
-var React     = require('react');
-var timeAgo   = require('damals');
-var localize  = require('globalization').localize;
-var strftime  = require('globalization/strftime');
+var React       = require('react');
+var timeAgo     = require('damals');
+var counterpart = require('counterpart');
+var strftime    = require('counterpart/strftime');
 
 var toString = Object.prototype.toString;
 
 function isString(value) {
-  return toString.call(value) == '[object String]';
+  return toString.call(value) === '[object String]';
 }
 
 function isNumber(value) {
-  return toString.call(value) == '[object Number]';
+  return toString.call(value) === '[object Number]';
 }
 
 var Ago = React.createClass({
   displayName: 'Ago',
-
-  autoUpdater: null,
+  ticker: null,
 
   getDefaultProps: function() {
     return {
@@ -32,17 +31,23 @@ var Ago = React.createClass({
     if (this.props.autoUpdate) {
       var delay = isNumber(this.props.autoUpdate) ? this.props.autoUpdate * 1000 : 2600;
 
-      this.autoUpdater = setInterval(function() {
-        this.forceUpdate();
-      }.bind(this), delay);
+      this.ticker = setInterval(this.invalidate, delay);
     }
+
+    counterpart.onLocaleChange(this.invalidate);
   },
 
   componentWillUnmount: function() {
-    if (this.autoUpdater) {
-      clearInterval(this.autoUpdater);
-      this.autoUpdater = null;
+    if (this.ticker) {
+      clearInterval(this.ticker);
+      this.ticker = null;
     }
+
+    counterpart.offLocaleChange(this.invalidate);
+  },
+
+  invalidate: function() {
+    this.forceUpdate();
   },
 
   render: function() {
@@ -54,7 +59,7 @@ var Ago = React.createClass({
 
     var content   = timeAgo(date);
     var dateTime  = strftime(date, "%Y-%m-%dT%H:%M:%S%z");
-    var title     = localize(date, { format: this.props.tooltipFormat });
+    var title     = counterpart.localize(date, { format: this.props.tooltipFormat });
 
     return this.transferPropsTo(
       React.DOM.time({ dateTime: dateTime, title: title }, content)
