@@ -26,5 +26,5 @@ publish:
 	npm publish
 
 define release
-	npm version $(1) --message 'release %s'
+	npm version $(1) --message 'release v%s'
 endef
