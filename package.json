@@ -1,6 +1,6 @@
 {
   "name": "react-ago-component",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A multi-lingual component for React that renders the approximate time ago in words from a specific past date using an HTML5 time element",
   "main": "index.js",
   "repository": {
