@@ -6,8 +6,8 @@ test: lint
 lint:
 	@$(BIN)/jsxhint index.js example/
 
-install link:
-	@npm $@
+install:
+	npm install
 
 example::
 	@$(BIN)/node-dev --no-deps example/server.js

@@ -1,8 +1,8 @@
 var assert      = require('assert');
 var React       = require('react');
 var counterpart = require('counterpart');
-var Ago         = require('./');
-var render      = React.renderComponentToString;
+var Ago         = React.createFactory(require('./'));
+var render      = React.renderToString;
 var date        = new Date('Sat Mar 06 1976 04:05:09 GMT+0100 (CET)');
 
 // opt-in library translations
@@ -72,5 +72,7 @@ assert.doesNotMatch = function(regexp, value, message) {
   }
 };
 
-// hack: suppress React's console warnings
-console.warn = function() {};
+// raise React console warnings as failed assertions
+console.warn = function(message) {
+  assert(false, message);
+};

@@ -4,6 +4,7 @@ var React       = require('react');
 var timeAgo     = require('damals');
 var counterpart = require('counterpart');
 var strftime    = require('counterpart/strftime');
+var assign      = require('object-assign');
 
 var toString = Object.prototype.toString;
 
@@ -61,9 +62,9 @@ var Ago = React.createClass({
     var dateTime  = strftime(date, "%Y-%m-%dT%H:%M:%S%z");
     var title     = counterpart.localize(date, { format: this.props.tooltipFormat });
 
-    return this.transferPropsTo(
-      React.DOM.time({ dateTime: dateTime, title: title }, content)
-    );
+    var props = assign({}, this.props, { dateTime: dateTime, title: title });
+
+    return React.DOM.time(props, content);
   }
 });
 
