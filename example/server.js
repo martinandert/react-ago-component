@@ -3,11 +3,11 @@
 var express     = require('express');
 var browserify  = require('connect-browserify');
 var reactify    = require('reactify');
-var render      = require('react').renderComponentToString;
+var React       = require('react');
 
 require('node-jsx').install();
 
-var App = require('./client');
+var App = React.createFactory(require('./client'));
 
 express()
   .use('/bundle.js', browserify.serve({
@@ -23,7 +23,7 @@ express()
     var now = Date.now();
 
     res.cookie('serverTime', now, { maxAge: 10000, httpOnly: false });
-    res.send(render(App({ serverTime: now })));
+    res.send(React.renderToString(App({ serverTime: now })));
   })
   .listen(3000, function() {
     console.log('Point your browser to http://localhost:3000');

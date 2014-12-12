@@ -42,7 +42,7 @@
     "node-dev": "^2.6.0",
     "node-jsx": "^0.12.4",
     "react": "^0.12.1",
-    "react-translate-component": "^0.5.1",
+    "react-translate-component": "^0.7.0",
     "reactify": "^0.17.1"
   }
 }

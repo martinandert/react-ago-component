@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 'use strict';
 
 var counterpart = require('counterpart');
@@ -23,7 +21,7 @@ var LocaleSwitcher = React.createClass({
   render: function() {
     return (
       <p>
-        <Translate>example.switch_locale</Translate>
+        <Translate content="example.switch_locale" />
 
         <select defaultValue={counterpart.getLocale()} onChange={this.handleChange}>
           <option>en</option>
@@ -52,10 +50,10 @@ var App = React.createClass({
         </head>
 
         <body>
-          <Translate ago={ago} component={React.DOM.h1} scope="example">this_page_was_requested</Translate>
+          <Translate component="h1" content="example.this_page_was_requested" ago={ago} />
 
-          <Translate component={React.DOM.p} scope="example">auto_update_hint</Translate>
-          <Translate component={React.DOM.p} scope="example">tooltip_hint</Translate>
+          <Translate component="p" content="example.auto_update_hint" />
+          <Translate component="p" content="example.tooltip_hint" />
 
           <LocaleSwitcher />
         </body>
@@ -65,10 +63,12 @@ var App = React.createClass({
 });
 
 if (typeof window !== 'undefined') {
+  window.React = React;
+
   window.onload = function() {
     var serverTime = new Date(parseInt(document.cookie.split('serverTime=')[1].split(';')[0]));
 
-    React.renderComponent(<App serverTime={serverTime} />, document);
+    React.render(<App serverTime={serverTime} />, document);
   };
 }
 
