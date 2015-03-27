@@ -31,18 +31,20 @@
   },
   "peerDependencies": {
     "counterpart": "^0.16.4",
-    "react": "^0.12.1"
+    "react": ">=0.12.1 && <0.14.*"
   },
   "devDependencies": {
     "connect-browserify": "^3.2.1",
     "counterpart": "^0.16.4",
     "express": "^4.10.5",
-    "jsxhint": "^0.8.1",
-    "mocha": "^2.0.1",
-    "node-dev": "^2.6.0",
+    "jsxhint": "^0.13.2",
+    "mocha": "^2.2.1",
+    "node-dev": "^2.6.1",
     "node-jsx": "^0.12.4",
-    "react": "^0.12.1",
-    "react-translate-component": "^0.7.0",
-    "reactify": "^0.17.1"
+    "react": ">=0.12.1 && <0.14.*",
+    "react-interpolate-component": "^0.7.0",
+    "react-translate-component": "^0.8.0",
+    "reactify": "^1.1.0",
+    "time": "^0.11.1"
   }
 }

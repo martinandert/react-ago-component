@@ -3,7 +3,10 @@ var React       = require('react');
 var counterpart = require('counterpart');
 var Ago         = React.createFactory(require('./'));
 var render      = React.renderToString;
-var date        = new Date('Sat Mar 06 1976 04:05:09 GMT+0100 (CET)');
+var time        = require('time');
+var date        = new time.Date('Sat Mar 06 1976 04:05:09 GMT+0100 (CET)');
+
+date.setTimezone('America/Chicago');
 
 // opt-in library translations
 counterpart.registerTranslations('de', require('counterpart/locales/de'));
@@ -19,12 +22,12 @@ describe('The Ago component', function() {
 
   it('renders a datetime attribute', function() {
     var markup = render(Ago({ date: date }));
-    assert.matches(/\sdatetime="1976-03-06T04:05:09\+01:00"/, markup);
+    assert.matches(/\sdatetime="1976-03-05T21:05:09-06:00"/, markup);
   });
 
   it('renders a title attribute', function() {
     var markup = render(Ago({ date: date }));
-    assert.matches(/\stitle="Sat, 6 Mar 1976 04:05"/, markup);
+    assert.matches(/\stitle="Fri, 5 Mar 1976 21:05"/, markup);
   });
 
   it('renders the time ago in words as inner HTML', function() {
@@ -36,7 +39,7 @@ describe('The Ago component', function() {
     counterpart.withLocale('de', function() {
       var markup = render(Ago({ date: date }));
 
-      assert.matches(/6\. Mär/, markup);
+      assert.matches(/5\. Mär/, markup);
       assert.matches(/\d+ Jahre?/, markup);
     });
   });
