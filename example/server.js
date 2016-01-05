@@ -4,6 +4,7 @@ var express     = require('express');
 var browserify  = require('connect-browserify');
 var reactify    = require('reactify');
 var React       = require('react');
+var ReactDOM    = require('react-dom/server');
 
 require('node-jsx').install();
 
@@ -23,7 +24,7 @@ express()
     var now = Date.now();
 
     res.cookie('serverTime', now, { maxAge: 10000, httpOnly: false });
-    res.send(React.renderToString(App({ serverTime: now })));
+    res.send(ReactDOM.renderToString(App({ serverTime: now })));
   })
   .listen(3000, function() {
     console.log('Point your browser to http://localhost:3000');

@@ -2,6 +2,7 @@
 
 var counterpart = require('counterpart');
 var React       = require('react');
+var ReactDOM    = require('react-dom');
 var Translate   = require('react-translate-component');
 var Ago         = require('../');
 
@@ -68,7 +69,7 @@ if (typeof window !== 'undefined') {
   window.onload = function() {
     var serverTime = new Date(parseInt(document.cookie.split('serverTime=')[1].split(';')[0]));
 
-    React.render(<App serverTime={serverTime} />, document);
+    ReactDOM.render(<App serverTime={serverTime} />, document);
   };
 }
 

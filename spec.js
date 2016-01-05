@@ -1,8 +1,9 @@
 var assert      = require('assert');
 var React       = require('react');
+var ReactDOM    = require('react-dom/server');
 var counterpart = require('counterpart');
 var Ago         = React.createFactory(require('./'));
-var render      = React.renderToString;
+var render      = ReactDOM.renderToString;
 var time        = require('time');
 var date        = new time.Date('Sat Mar 06 1976 04:05:09 GMT+0100 (CET)');
 

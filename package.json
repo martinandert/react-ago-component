@@ -30,20 +30,21 @@
     "object-assign": "^2.0.0"
   },
   "peerDependencies": {
-    "counterpart": "^0.16.4",
-    "react": ">=0.12.1 && <0.14.*"
+    "counterpart": ">=0.16.0",
+    "react": ">=0.14.0"
   },
   "devDependencies": {
     "connect-browserify": "^3.2.1",
-    "counterpart": "^0.16.4",
+    "counterpart": "^0.17.1",
     "express": "^4.10.5",
     "jsxhint": "^0.13.2",
     "mocha": "^2.2.1",
     "node-dev": "^2.6.1",
     "node-jsx": "^0.12.4",
-    "react": ">=0.12.1 && <0.14.*",
-    "react-interpolate-component": "^0.7.0",
-    "react-translate-component": "^0.8.0",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "react-interpolate-component": "^0.8.0",
+    "react-translate-component": "^0.10.0",
     "reactify": "^1.1.0",
     "time": "^0.11.1"
   }
