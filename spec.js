@@ -77,6 +77,6 @@ assert.doesNotMatch = function(regexp, value, message) {
 };
 
 // raise React console warnings as failed assertions
-console.warn = function(message) {
+console.error = function(message) {
   assert(false, message);
 };

@@ -63,6 +63,9 @@ var Ago = React.createClass({
     var title     = counterpart.localize(date, { format: this.props.tooltipFormat });
 
     var props = assign({}, this.props, { dateTime: dateTime, title: title });
+    delete props.date;
+    delete props.tooltipFormat;
+    delete props.autoUpdate;
 
     return React.DOM.time(props, content);
   }
