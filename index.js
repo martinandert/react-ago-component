@@ -1,10 +1,12 @@
 'use strict';
 
-var React       = require('react');
-var timeAgo     = require('damals');
+var React = require('react');
+var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
+var timeAgo = require('damals');
 var counterpart = require('counterpart');
-var strftime    = require('counterpart/strftime');
-var assign      = require('object-assign');
+var strftime = require('counterpart/strftime');
+var assign = require('object-assign');
 
 var toString = Object.prototype.toString;
 
@@ -16,9 +18,22 @@ function isNumber(value) {
   return toString.call(value) === '[object Number]';
 }
 
-var Ago = React.createClass({
+var Ago = createReactClass({
   displayName: 'Ago',
   ticker: null,
+
+  propTypes: {
+    date: PropTypes.oneOfType([
+      PropTypes.instanceOf(Date),
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    tooltipFormat: PropTypes.string,
+    autoUpdate: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.number
+    ])
+  },
 
   getDefaultProps: function() {
     return {
@@ -59,7 +74,7 @@ var Ago = React.createClass({
     }
 
     var content   = timeAgo(date);
-    var dateTime  = strftime(date, "%Y-%m-%dT%H:%M:%S%z");
+    var dateTime  = strftime(date, '%Y-%m-%dT%H:%M:%S%z');
     var title     = counterpart.localize(date, { format: this.props.tooltipFormat });
 
     var props = assign({}, this.props, { dateTime: dateTime, title: title });

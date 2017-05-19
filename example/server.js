@@ -16,16 +16,17 @@ express()
     debug: true, watch: true,
     transforms: [reactify]
   }))
-  .get('/style.css', function(req, res, next) {
+  .get('/style.css', function(req, res) {
     res.setHeader('Content-Type', 'text/css');
     res.send('body { margin-top: 100px; text-align: center; } h1 { font-weight: normal; margin: 0 20px 20px; } time { font-weight: bold; } p { margin: 0 20px 5px; }');
   })
-  .get('/', function(req, res, next) {
+  .get('/', function(req, res) {
     var now = Date.now();
 
     res.cookie('serverTime', now, { maxAge: 10000, httpOnly: false });
     res.send(ReactDOM.renderToString(App({ serverTime: now })));
   })
   .listen(3000, function() {
+    // eslint-disable-next-line no-console
     console.log('Point your browser to http://localhost:3000');
   });

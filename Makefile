@@ -4,7 +4,7 @@ test: lint
 	@$(BIN)/mocha -t 5000 -b -R spec spec.js
 
 lint:
-	@$(BIN)/jsxhint index.js example/
+	@$(BIN)/eslint index.js example/
 
 install:
 	npm install
