@@ -25,7 +25,7 @@ describe('The Ago component', function() {
 
   it('renders a datetime attribute', function() {
     var markup = render(Ago({ date: date }));
-    assert.matches(/\sdatetime="1976-03-05T21:05:09-06:00"/, markup);
+    assert.matches(/\sdateTime="1976-03-05T21:05:09-06:00"/, markup);
   });
 
   it('renders a title attribute', function() {
@@ -49,12 +49,12 @@ describe('The Ago component', function() {
 
   it('works with milliseconds since Unix epoch', function() {
     var markup = render(Ago({ date: date.valueOf() }));
-    assert.matches(/\sdatetime="1976-03-06T04:05:09\+01:00"/, markup);
+    assert.matches(/\sdateTime="1976-03-06T04:05:09\+01:00"/, markup);
   });
 
   it('works with string dates', function() {
     var markup = render(Ago({ date: date.toISOString() }));
-    assert.matches(/\sdatetime="1976-03-06T04:05:09\+01:00"/, markup);
+    assert.matches(/\sdateTime="1976-03-06T04:05:09\+01:00"/, markup);
   });
 
   it('is cool', function() {

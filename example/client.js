@@ -73,7 +73,7 @@ if (typeof window !== 'undefined') {
   window.onload = function() {
     var serverTime = parseInt(document.cookie.split('serverTime=')[1].split(';')[0]);
 
-    ReactDOM.render(<App serverTime={serverTime} />, document);
+    ReactDOM.hydrate(<App serverTime={serverTime} />, document);
   };
 }
 

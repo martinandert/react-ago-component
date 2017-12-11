@@ -1,12 +1,12 @@
 'use strict';
 
-var React = require('react');
 var PropTypes = require('prop-types');
 var createReactClass = require('create-react-class');
 var timeAgo = require('damals');
 var counterpart = require('counterpart');
 var strftime = require('counterpart/strftime');
 var assign = require('object-assign');
+var DOM = require('react-dom-factories');
 
 var toString = Object.prototype.toString;
 
@@ -82,7 +82,7 @@ var Ago = createReactClass({
     delete props.tooltipFormat;
     delete props.autoUpdate;
 
-    return React.DOM.time(props, content);
+    return DOM.time(props, content);
   }
 });
 
